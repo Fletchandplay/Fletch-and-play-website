@@ -1,0 +1,189 @@
+import React, { useState } from "react";
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { PawPrint } from "lucide-react";
+
+export default function FletchAndPlayDaycare() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const mailtoLink = `mailto:Fletchandplay@yahoo.com?subject=Booking Inquiry from ${formData.name}&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0APhone: ${formData.phone}%0D%0AMessage: ${formData.message}`;
+    window.location.href = mailtoLink;
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-yellow-100 to-rose-100 text-gray-800 p-6 font-sans">
+      <header className="text-center py-10">
+        <h1 className="text-5xl font-bold text-fuchsia-800">Fletch & Play Daycare</h1>
+        <p className="text-xl mt-4">Where tails wag and paws play all day!</p>
+        <div className="mt-6">
+          <Image
+            src="/mnt/data/doggie day care logo .png"
+            alt="Fletch & Play Logo"
+            width={200}
+            height={200}
+            className="mx-auto"
+          />
+        </div>
+      </header>
+
+      <section className="grid md:grid-cols-2 gap-8 py-10">
+        <Card className="shadow-lg rounded-2xl p-4 bg-white">
+          <CardContent>
+            <h2 className="text-3xl font-semibold mb-2">About Us</h2>
+            <p>
+              Fletch & Play Daycare is a loving, professional doggy daycare run by
+              Linda Fletcher. We provide a safe, fun, and stimulating environment for your dogs
+              to socialize, play, and relax while you're away.
+            </p>
+            <div className="mt-4">
+              <Image
+                src="/mnt/data/linda with loki.HEIC"
+                alt="Linda with Loki"
+                width={300}
+                height={300}
+                className="rounded-xl"
+              />
+            </div>
+            <p className="mt-4">
+              Hi, I’m Linda! I’m married and blessed with four beautiful children – two of them furry! I absolutely love dogs and have achieved an OFQUAL Level 3 in Canine Daycare and Boarding. I’m the proud owner of Loki, a playful Belgian Malinois, and Theo, a cheeky Chihuahua-Pug mix. I’m dedicated to bringing love and joy to every dog that joins our daycare family.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-lg rounded-2xl p-4 bg-white">
+          <CardContent>
+            <h2 className="text-3xl font-semibold mb-2">Our Services</h2>
+            <ul className="list-disc ml-5">
+              <li>Full Day Doggy Daycare</li>
+              <li>Half Day Options</li>
+              <li>Socialization and Playgroups</li>
+              <li>Outdoor Adventures</li>
+              <li>Pick-up & Drop-off Available</li>
+            </ul>
+            <p className="mt-4 font-semibold">Contact us for pricing information!</p>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-lg rounded-2xl p-4 bg-white md:col-span-2">
+          <CardContent>
+            <h2 className="text-3xl font-semibold mb-2">Booking Form</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-2 border rounded"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-2 border rounded"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Your Phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full p-2 border rounded"
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Additional Information"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full p-2 border rounded"
+              ></textarea>
+              <Button type="submit" className="bg-fuchsia-600 text-white px-4 py-2 rounded">
+                Submit
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-lg rounded-2xl p-4 bg-white md:col-span-2">
+          <CardContent>
+            <h2 className="text-3xl font-semibold mb-2">Gallery</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <Image
+                src="/mnt/data/dog picture.JPG"
+                alt="Gallery Image 1"
+                width={300}
+                height={200}
+                className="rounded-xl"
+              />
+              {/* Add more <Image> components here for additional gallery items */}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-lg rounded-2xl p-4 bg-white md:col-span-2">
+          <CardContent>
+            <h2 className="text-3xl font-semibold mb-2">Testimonials</h2>
+            <p className="italic">“Fletch & Play is amazing! Linda took such great care of our pup – we could tell he had the time of his life.” – Happy Customer</p>
+            {/* Add more testimonials here */}
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-lg rounded-2xl p-4 bg-white">
+          <CardContent>
+            <h2 className="text-3xl font-semibold mb-2">Contact Us</h2>
+            <p><strong>Linda Fletcher</strong></p>
+            <p>Phone: 07791325814</p>
+            <p>Email: Fletchandplay@yahoo.com</p>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-lg rounded-2xl p-4 bg-white">
+          <CardContent>
+            <h2 className="text-3xl font-semibold mb-2">Why Choose Us?</h2>
+            <p>
+              With a huge passion for dogs, Fletch & Play is
+              committed to providing top-quality care. Your dog will love our owner,
+              safe facilities, and fun-filled schedule.
+            </p>
+            <div className="mt-4">
+              <Image
+                src="/mnt/data/dog picture.JPG"
+                alt="Dogs Theo and Loki"
+                width={500}
+                height={300}
+                className="rounded-xl"
+              />
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
+      <footer className="text-center py-10">
+        <p className="text-sm">&copy; {new Date().getFullYear()} Fletch & Play Daycare. All rights reserved.</p>
+        <div className="flex justify-center gap-2 mt-2">
+          <PawPrint className="w-5 h-5" />
+          <PawPrint className="w-5 h-5" />
+          <PawPrint className="w-5 h-5" />
+        </div>
+      </footer>
+    </div>
+  );
+}
